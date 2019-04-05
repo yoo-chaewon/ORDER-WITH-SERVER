@@ -1,27 +1,29 @@
 package com.example.demo.dao;
-import java.util.ArrayList;
-import java.util.List;
-import com.example.demo.model.Customer;
+
+import com.example.demo.model.Menu;
 import org.springframework.stereotype.Component;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.List;
+
 @Component
-public class CustomerDAO {
-    // Dummy database. Initialize with some dummy values.
-    private static List customers;
+public class MenuDAO {
+    private static List menus;
     {
-        customers = new ArrayList();
-        customers.add(new Customer(101, "John", "Doe", "djohn@gmail.com", "121-232-3435"));
-        customers.add(new Customer(201, "Russ", "Smith", "sruss@gmail.com", "343-545-2345"));
-        customers.add(new Customer(301, "Kate", "Williams", "kwilliams@gmail.com", "876-237-2987"));
+        menus = new ArrayList();
+        menus.add(new Menu("불고기 덮밥", "2000"));
+        menus.add(new Menu("불고기 김밥", "5000"));
+        menus.add(new Menu("떡볶이", "100"));
     }
 
     public List list() {
-        return customers;
+        return menus;
     }
 
-    public Customer get(Long id) {
+    public Menu get(Long id) {
         /*
-        for (Customer c : customers) {
+        for (Menu c : menus) {
             if (c.getId().equals(id)) {
                 return c;
             }
@@ -29,10 +31,11 @@ public class CustomerDAO {
         return null;
     }
 
-    public Customer create(Customer customer) {
+    public Menu create(Menu menu) {
+        /*
         customer.setId(System.currentTimeMillis());
-        customers.add(customer);
-        return customer;
+        customers.add(customer);*/
+        return menu;
     }
 
     public Long delete(Long id) {
@@ -46,7 +49,7 @@ public class CustomerDAO {
         return null;
     }
 
-    public Customer update(Long id, Customer customer) {
+    public Menu update(Long id, Menu customer) {
         /*
         for (Customer c : customers) {
             if (c.getId().equals(id)) {

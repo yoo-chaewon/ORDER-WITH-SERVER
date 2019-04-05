@@ -2,8 +2,8 @@ package com.example.demo.controller;
 
 import java.util.List;
 
-import com.example.demo.dao.CustomerDAO;
-import com.example.demo.model.Customer;
+import com.example.demo.dao.MenuDAO;
+import com.example.demo.model.Menu;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,46 +16,46 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class CustomerRestController {
+public class MenuRestController {
 
     @Autowired
-    private CustomerDAO customerDAO;
+    private MenuDAO menuDAO;
 
-    @GetMapping("/customers")
+    @GetMapping("/menu")
     public List getCustomers() {
-        return customerDAO.list();
+        return menuDAO.list();
     }
 
-    @GetMapping("/customers/{id}")
+    @GetMapping("/menu/{id}")
     public ResponseEntity getCustomer(@PathVariable("id") Long id) {
-        Customer customer = customerDAO.get(id);
-        if (customer == null) {
+        Menu menu = menuDAO.get(id);
+        if (menu == null) {
             return new ResponseEntity("No Customer found for ID " + id, HttpStatus.NOT_FOUND);
         }
-        return new ResponseEntity(customer, HttpStatus.OK);
+        return new ResponseEntity(menu, HttpStatus.OK);
     }
 
-    @PostMapping(value = "/customers")
-    public ResponseEntity createCustomer(@RequestBody Customer customer) {
-        customerDAO.create(customer);
-        return new ResponseEntity(customer, HttpStatus.OK);
+    @PostMapping(value = "/menu")
+    public ResponseEntity createCustomer(@RequestBody Menu menu) {
+        menuDAO.create(menu);
+        return new ResponseEntity(menu, HttpStatus.OK);
     }
 
-    @DeleteMapping("/customers/{id}")
+    @DeleteMapping("/menu/{id}")
     public ResponseEntity deleteCustomer(@PathVariable Long id) {
-        if (null == customerDAO.delete(id)) {
+        if (null == menuDAO.delete(id)) {
             return new ResponseEntity("No Customer found for ID " + id, HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity(id, HttpStatus.OK);
     }
 
-    @PutMapping("/customers/{id}")
-    public ResponseEntity updateCustomer(@PathVariable Long id, @RequestBody Customer customer) {
-        customer = customerDAO.update(id, customer);
-        if (null == customer) {
+    @PutMapping("/menu/{id}")
+    public ResponseEntity updateCustomer(@PathVariable Long id, @RequestBody Menu menu) {
+        menu = menuDAO.update(id, menu);
+        if (null == menu) {
             return new ResponseEntity("No Customer found for ID " + id, HttpStatus.NOT_FOUND);
         }
-        return new ResponseEntity(customer, HttpStatus.OK);
+        return new ResponseEntity(menu, HttpStatus.OK);
     }
 
 }
