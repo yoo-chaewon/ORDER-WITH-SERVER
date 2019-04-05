@@ -3,18 +3,37 @@ package com.example.demo.dao;
 import com.example.demo.model.Menu;
 import org.springframework.stereotype.Component;
 
-import java.lang.reflect.Array;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Component
 public class MenuDAO {
     private static List menus;
+
+    //    {
+//        menus = new ArrayList();
+//        menus.add(new Menu("불고기 덮밥", "2000"));
+//        menus.add(new Menu("불고기 김밥", "5000"));
+//        menus.add(new Menu("떡볶이", "100"));
+//    }
     {
         menus = new ArrayList();
-        menus.add(new Menu("불고기 덮밥", "2000"));
-        menus.add(new Menu("불고기 김밥", "5000"));
-        menus.add(new Menu("떡볶이", "100"));
+        try {
+            File file = new File("C:\\spring-boots\\test\\src\\main\\resources\\raw\\miso_menu.txt");
+            FileReader fileReader = new FileReader(file);
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
+            int num = Integer.parseInt(bufferedReader.readLine());
+
+            for (int i = 0; i < num; i++) {
+                String[] input = bufferedReader.readLine().split(" ");
+                String menu = input[0];
+                String price = input[1];
+                menus.add(new Menu(menu, price));
+            }
+        }catch (IOException e){
+            e.printStackTrace();
+        }
     }
 
     public List list() {
