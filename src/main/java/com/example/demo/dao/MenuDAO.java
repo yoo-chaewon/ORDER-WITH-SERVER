@@ -9,7 +9,7 @@ import java.util.List;
 
 @Component
 public class MenuDAO {
-    private static List menus;
+    public static List menus;
 
     //    {
 //        menus = new ArrayList();
@@ -29,9 +29,9 @@ public class MenuDAO {
                 String[] input = bufferedReader.readLine().split(" ");
                 String menu = input[0];
                 String price = input[1];
-                menus.add(new Menu(menu, price));
+                menus.add(new Menu(i,menu, price));
             }
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }

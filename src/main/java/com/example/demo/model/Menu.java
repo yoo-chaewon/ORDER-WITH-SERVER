@@ -1,12 +1,22 @@
 package com.example.demo.model;
 
 public class Menu {
+    int num;
     String name;
     String price;
 
-    public Menu(String name, String price) {
+    public Menu(int num, String name, String price) {
+        this.num = num;
         this.name = name;
         this.price = price;
+    }
+
+    public int getNum() {
+        return num;
+    }
+
+    public void setNum(int num) {
+        this.num = num;
     }
 
     public String getName() {
