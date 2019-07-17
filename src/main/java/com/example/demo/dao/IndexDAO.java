@@ -45,11 +45,11 @@ public class IndexDAO {
 
         for(int i = 33032; i <= 55203; i++){
             if(index[i][0] != 0){
-                String temp = " ";
+                String temp = "";
                 for(int j = 1; j <= index[i][0]; j++){
                     temp = temp + index[i][j] + "/";
                 }
-                indexResult.add(new Index((char)i, temp));
+                indexResult.add(new Index((char)i, index[i][0],temp));
             }
         }
     }

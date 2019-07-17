@@ -2,10 +2,12 @@ package com.example.demo.model;
 
 public class Index {
     char word;
+    int count;
     String list;
 
-    public Index(char word, String list) {
+    public Index(char word, int count, String list) {
         this.word = word;
+        this.count = count;
         this.list = list;
     }
 
@@ -15,6 +17,14 @@ public class Index {
 
     public void setWord(char word) {
         this.word = word;
+    }
+
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
     }
 
     public String getList() {
