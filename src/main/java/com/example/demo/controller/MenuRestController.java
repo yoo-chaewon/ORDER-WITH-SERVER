@@ -1,19 +1,25 @@
 package com.example.demo.controller;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.example.demo.dao.MenuDAO;
 import com.example.demo.model.Menu;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 @RestController
 public class MenuRestController {
@@ -22,9 +28,19 @@ public class MenuRestController {
     private MenuDAO menuDAO;
 
     @GetMapping("/menu")
+    //@RequestMapping("/menu")
     public List getCustomers() {
         return menuDAO.list();
     }
+
+
+    @RequestMapping("/index")
+    public List getIndex() {
+        return menuDAO.getMenuIndex();
+    }
+
+
+
 
     @GetMapping("/menu/{id}")
     public ResponseEntity getCustomer(@PathVariable("id") Long id) {
@@ -40,6 +56,7 @@ public class MenuRestController {
         menuDAO.create(menu);
         return new ResponseEntity(menu, HttpStatus.OK);
     }
+
 
     @DeleteMapping("/menu/{id}")
     public ResponseEntity deleteCustomer(@PathVariable Long id) {
