@@ -20,7 +20,7 @@ public class MenuDAO {
     {
         menus = new ArrayList();
         try {
-            File file = new File("C:\\spring-boots\\test\\src\\main\\resources\\raw\\miso_menu.txt");
+            File file = new File("/Users/yoochaewon/Documents/CODING/SERVER-PROJECT/ORDER-WITH-SERVER/src/main/resources/raw/miso_menu.txt");
             FileReader fileReader = new FileReader(file);
             BufferedReader bufferedReader = new BufferedReader(fileReader);
             int num = Integer.parseInt(bufferedReader.readLine());
