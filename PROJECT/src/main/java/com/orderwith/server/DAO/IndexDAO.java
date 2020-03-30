@@ -19,7 +19,7 @@ public class IndexDAO {
         indexResult = new ArrayList();
         ArrayList<Menu> menuArrayList = new ArrayList<>();
         try {
-            File file = new File("/Users/yoochaewon/Documents/CODING/SERVER-PROJECT/ORDER-WITH-SERVER/PROJECT/src/main/resources/raw/miso_menu.txt");
+            File file = new File("/home/ec2-user/app/git/ORDER-WITH-SERVER/PROJECT/src/main/resources/raw/miso_menu.txt");
             FileReader fileReader = new FileReader(file);
             BufferedReader bufferedReader = new BufferedReader(fileReader);
             num = Integer.parseInt(bufferedReader.readLine());
