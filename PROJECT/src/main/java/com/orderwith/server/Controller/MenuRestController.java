@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
 
 @RestController
@@ -16,8 +17,10 @@ public class MenuRestController {
     private MenuDAO menuDAO;
 
     @GetMapping("/menu")
-    public List getCustomers() {
-        return menuDAO.list();
+    public HashMap getCustomers() {
+        HashMap<String, List> hashMap = new HashMap<>();
+        hashMap.put("Menus", menuDAO.list());
+        return hashMap;
     }
 
     @GetMapping("/menu/{id}")
