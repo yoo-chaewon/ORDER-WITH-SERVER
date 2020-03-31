@@ -9,10 +9,10 @@
 
 #### ☝️ 기존 text파일로 되어있는 메뉴 ->  JSON
 
-<img src="/References/textraw.png" width ="50%" height="50%"></img>
-<img src="/References/menuresult.png" width ="50%" height="50%"></img>
+<img src="/References/textraw.png" width ="70%" height="70%"></img>
+<img src="/References/menuresult.png" width ="70%" height="70%"></img>
 
 ####  
 
 #### ✌️ 인덱싱 결과
-<img src="/References/indexresult.png" width ="50%" height="50%"></img>
+<img src="/References/indexresult.png" width ="70%" height="70%"></img>
